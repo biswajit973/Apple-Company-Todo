@@ -3,104 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A simple and modern todo list manager." />
-  <title>Taskflow | Simple Todo List</title>
+  <meta name="description" content="A playful bento-style todo list manager." />
+  <title>Taskflow ✦ Todo Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
   <main class="page-shell">
-    <section class="hero-section" aria-labelledby="page-title">
-      <div>
-        <p class="eyebrow">PERSONAL WORKSPACE</p>
-        <h1 id="page-title">Track your tasks.</h1>
-        <p class="hero-copy">A clean space to add, track and finish your everyday work.</p>
-      </div>
-      <div class="task-count" aria-live="polite">
-        <span id="taskCount">0</span>
-        <small>total tasks</small>
-      </div>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Taskflow home"><span class="brand-mark">✦</span> taskflow</a>
+      <button class="theme-button" id="themeToggle" type="button" aria-label="Switch to dark mode"><span id="themeIcon" aria-hidden="true">☾</span><span id="themeText">Night mode</span></button>
+    </header>
+
+    <section class="hero-card bento-card" aria-labelledby="page-title">
+      <div class="hero-copy-wrap"><p class="eyebrow">YOUR TINY TASK UNIVERSE <span aria-hidden="true">✹</span></p><h1 id="page-title">Make a little<br /><em>magic</em> today.</h1><p class="hero-copy">Small steps, big main-character energy. Keep your day moving one task at a time.</p></div>
+      <div class="hero-doodle" aria-hidden="true"><span>☻</span><i>do the thing!</i></div><div class="hero-sticker" aria-hidden="true">LET'S<br />GO <span>↗</span></div><div class="hero-sparkles" aria-hidden="true">✦<br />✧</div>
     </section>
 
-    <section class="content-grid">
-      <article class="panel form-panel">
-        <div class="panel-heading">
-          <div>
-            <p class="section-label">NEW ENTRY</p>
-            <h2>Add a task</h2>
-          </div>
-          <span class="plus-icon" aria-hidden="true">+</span>
-        </div>
+    <section class="stats-card bento-card" aria-label="Task summary"><span class="card-emoji" aria-hidden="true">🌈</span><p class="section-label">TODAY'S VIBE</p><strong id="taskCount">0</strong><span class="stats-caption">tasks in your orbit</span><div class="mini-progress"><span id="progressBar"></span></div><small id="progressText">Fresh start energy</small></section>
 
-        <form id="todoForm">
-          <div class="field-group">
-            <label for="taskName">Task name <span>*</span></label>
-            <input id="taskName" name="taskName" type="text" placeholder="e.g. Prepare monthly report" required maxlength="100" />
-          </div>
-
-          <div class="field-group">
-            <label for="comments">Comments</label>
-            <textarea id="comments" name="comments" rows="4" placeholder="Add a small note (optional)" maxlength="300"></textarea>
-          </div>
-
-          <div class="form-row">
-            <div class="field-group">
-              <label for="taskDate">Task added date</label>
-              <input id="taskDate" name="taskDate" type="date" required />
-            </div>
-            <div class="field-group">
-              <label for="status">Status</label>
-              <select id="status" name="status">
-                <option value="Pending">Pending</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Completed">Completed</option>
-              </select>
-            </div>
-          </div>
-
-          <button class="primary-button" type="submit">
-            <span aria-hidden="true">+</span> Add task
-          </button>
-        </form>
-      </article>
-
-      <article class="panel list-panel">
-        <div class="list-heading">
-          <div>
-            <p class="section-label">YOUR LIST</p>
-            <h2>All tasks</h2>
-          </div>
-          <span id="emptyHint" class="empty-hint">Nothing here yet</span>
-        </div>
-
-        <div id="todoList" class="todo-list" aria-live="polite"></div>
-      </article>
+    <section class="form-card bento-card" aria-labelledby="add-task-title">
+      <div class="panel-heading"><div><p class="section-label">ADD TO THE MIX <span aria-hidden="true">✍️</span></p><h2 id="add-task-title">New task</h2></div><span class="plus-icon" aria-hidden="true">+</span></div>
+      <form id="todoForm">
+        <div class="field-group"><label for="taskName">What are we making happen? <span>*</span></label><input id="taskName" name="taskName" type="text" placeholder="e.g. Finish the pitch deck" required maxlength="100" /></div>
+        <div class="field-group"><label for="comments">Tiny details</label><textarea id="comments" name="comments" rows="3" placeholder="A note for future you..." maxlength="300"></textarea></div>
+        <div class="form-row"><div class="field-group"><label for="taskDate">Added on</label><input id="taskDate" name="taskDate" type="date" required /></div><div class="field-group"><label for="status">Current mood</label><select id="status" name="status"><option value="Pending">Pending</option><option value="In Progress">In Progress</option><option value="Completed">Completed</option></select></div></div>
+        <button class="primary-button" type="submit"><span aria-hidden="true">✦</span> Add to my universe</button>
+      </form>
     </section>
+
+    <section class="list-card bento-card" aria-labelledby="list-title"><div class="list-heading"><div><p class="section-label">THE LINE-UP <span aria-hidden="true">⚡</span></p><h2 id="list-title">Your tasks</h2></div><span id="emptyHint" class="empty-hint">Nothing here yet</span></div><div id="todoList" class="todo-list" aria-live="polite"></div></section>
+    <footer class="footer-note">made with good intentions &amp; a little bit of ✨</footer>
   </main>
 
-  <template id="todoTemplate">
-    <article class="todo-item">
-      <div class="todo-main">
-        <div class="todo-title-row">
-          <span class="todo-id"></span>
-          <h3 class="todo-name"></h3>
-        </div>
-        <p class="todo-comments"></p>
-        <div class="todo-meta">
-          <span class="todo-date"></span>
-        </div>
-      </div>
-      <div class="todo-actions">
-        <label class="sr-only">Update task status</label>
-        <select class="todo-status"></select>
-        <button class="delete-button" type="button" aria-label="Delete task">Delete</button>
-      </div>
-    </article>
-  </template>
-
-  <script src="js/shared/helpers.js"></script>
-  <script src="js/app.js"></script>
+  <template id="todoTemplate"><article class="todo-item"><div class="todo-main"><div class="todo-title-row"><span class="todo-id"></span><h3 class="todo-name"></h3></div><p class="todo-comments"></p><div class="todo-meta"><span class="todo-date"></span></div></div><div class="todo-actions"><label class="sr-only">Update task status</label><select class="todo-status"></select><button class="delete-button" type="button" aria-label="Delete task">Delete</button></div></article></template>
+  <script src="js/shared/helpers.js"></script><script src="js/app.js"></script>
 </body>
 </html>
