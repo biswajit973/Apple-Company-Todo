@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple and modern todo list manager." />
+  <title>Taskflow | Simple Todo List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero-section" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">PERSONAL WORKSPACE</p>
+        <h1 id="page-title">Keep your tasks moving.</h1>
+        <p class="hero-copy">A clean space to add, track and finish your everyday work.</p>
+      </div>
+      <div class="task-count" aria-live="polite">
+        <span id="taskCount">0</span>
+        <small>total tasks</small>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel form-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="section-label">NEW ENTRY</p>
+            <h2>Add a task</h2>
+          </div>
+          <span class="plus-icon" aria-hidden="true">+</span>
+        </div>
+
+        <form id="todoForm">
+          <div class="field-group">
+            <label for="taskName">Task name <span>*</span></label>
+            <input id="taskName" name="taskName" type="text" placeholder="e.g. Prepare monthly report" required maxlength="100" />
+          </div>
+
+          <div class="field-group">
+            <label for="comments">Comments</label>
+            <textarea id="comments" name="comments" rows="4" placeholder="Add a small note (optional)" maxlength="300"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="field-group">
+              <label for="taskDate">Task added date</label>
+              <input id="taskDate" name="taskDate" type="date" required />
+            </div>
+            <div class="field-group">
+              <label for="status">Status</label>
+              <select id="status" name="status">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="primary-button" type="submit">
+            <span aria-hidden="true">+</span> Add task
+          </button>
+        </form>
+      </article>
+
+      <article class="panel list-panel">
+        <div class="list-heading">
+          <div>
+            <p class="section-label">YOUR LIST</p>
+            <h2>All tasks</h2>
+          </div>
+          <span id="emptyHint" class="empty-hint">Nothing here yet</span>
+        </div>
+
+        <div id="todoList" class="todo-list" aria-live="polite"></div>
+      </article>
+    </section>
+  </main>
+
+  <template id="todoTemplate">
+    <article class="todo-item">
+      <div class="todo-main">
+        <div class="todo-title-row">
+          <span class="todo-id"></span>
+          <h3 class="todo-name"></h3>
+        </div>
+        <p class="todo-comments"></p>
+        <div class="todo-meta">
+          <span class="todo-date"></span>
+        </div>
+      </div>
+      <div class="todo-actions">
+        <label class="sr-only">Update task status</label>
+        <select class="todo-status"></select>
+        <button class="delete-button" type="button" aria-label="Delete task">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="js/shared/helpers.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
